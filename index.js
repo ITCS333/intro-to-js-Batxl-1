@@ -7,7 +7,7 @@ function sum(a, b) {
   // TODO: Implement this function.
 function sum(a, b) {
   if (typeof a !== 'number' || typeof b !== 'number') {
-    throw new Error('Both arguments must be numbers');
+    return 0;
   }
   
   return a + b;
@@ -31,20 +31,20 @@ function reverseString(str) {
  */
 function findLargest(numbers) {
   // TODO: Implement this function.
- function findLargest(numbers) {
-
-  if (!Array.isArray(numbers) || numbers.length === 0) return null;
+function findLargest(numbers) {
+  if (numbers.length === 0) {
+    return null;
+  }
   let largest = numbers[0];
-
   for (let i = 1; i < numbers.length; i++) {
-    if (typeof numbers[i] === 'number' && numbers[i] > largest) {
+    if (numbers[i] > largest) {
       largest = numbers[i];
     }
   }
-
   return largest;
 }
-}
+  }
+
 
 
 /**
@@ -56,20 +56,12 @@ function findLargest(numbers) {
 function isPalindrome(str) {
   // TODO: Implement this function.
 function isPalindrome(str) {
-
-  const normalized = str.toLowerCase();
-  if (normalized.length <= 1) return true;
-  let left = 0;
-  let right = normalized.length - 1;
-
-  while (left < right) {
-    if (normalized[left] !== normalized[right]) {
+  const lowercaseStr = str.toLowerCase();
+  for (let i = 0; i < Math.floor(lowercaseStr.length / 2); i++) {
+    if (lowercaseStr[i] !== lowercaseStr[lowercaseStr.length - 1 - i]) {
       return false;
     }
-    left++;
-    right--;
   }
-
   return true;
 }
 }
@@ -80,16 +72,15 @@ function isPalindrome(str) {
  */
 function filterEvenNumbers(numbers) {
   // TODO: Implement this function.
- function filterEvenNumbers(numbers) {
-  if (!Array.isArray(numbers) || numbers.length === 0) return [];
-
-  const evens = [];
+function filterEvenNumbers(numbers) {
+  const evenNumbers = [];
   for (let i = 0; i < numbers.length; i++) {
     if (numbers[i] % 2 === 0) {
-      evens.push(numbers[i]);
+      evenNumbers.push(numbers[i]);
     }
   }
-  return evens;
+  
+  return evenNumbers;
 }
 }
 
